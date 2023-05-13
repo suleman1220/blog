@@ -7,8 +7,12 @@ import OgImage from "@/components/ogimage";
 // ).then(res => res.arrayBuffer());
 
 const InterBold = fetch(
-  new URL("../../../../public/fonts/Inter-Bold.otf", import.meta.url)
+  new URL("/fonts/Inter-Bold.otf", import.meta.url)
 ).then(res => res.arrayBuffer());
+
+export const alt = "Article Image";
+
+export const contentType = "image/png";
 
 export default async function handler({ params }) {
   const post = await getPostBySlug(params.slug);
