@@ -17,6 +17,9 @@ export const contentType = "image/png";
 export default async function handler({ params }) {
   const post = await getPostBySlug(params.slug);
 
+  const InterRegular = await fetch("fonts/Inter-Regular.otf").then(
+    res => res.arrayBuffer()
+  );
   // const fontData = await InterBold;
   // const [interRegularFont, interBoldFont] = await Promise.all([
   //   InterRegular,
@@ -25,19 +28,19 @@ export default async function handler({ params }) {
 
   return new ImageResponse(<OgImage post={post} />, {
     width: 1200,
-    height: 630
-    // fonts: [
-    //   {
-    //     name: "Inter",
-    //     data: fontData,
-    //     style: "normal"
-    //   }
-    //   // {
-    //   //   name: "Inter",
-    //   //   data: interBoldFont,
-    //   //   style: "normal",
-    //   //   weight: 700
-    //   // }
-    // ]
+    height: 630,
+    fonts: [
+      {
+        name: "Inter",
+        data: InterRegular,
+        style: "normal"
+      }
+      // {
+      //   name: "Inter",
+      //   data: interBoldFont,
+      //   style: "normal",
+      //   weight: 700
+      // }
+    ]
   });
 }
