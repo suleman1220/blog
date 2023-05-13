@@ -7,7 +7,8 @@ import OgImage from "@/components/ogimage";
 // ).then(res => res.arrayBuffer());
 
 const InterBold = fetch(
-  new URL("/fonts/Inter-Bold.otf", import.meta.url)
+  // new URL("../../../../public/fonts/Inter-Bold.otf", import.meta.url)
+  "/fonts/Inter-Bold.otf"
 ).then(res => res.arrayBuffer());
 
 export const alt = "Article Image";
