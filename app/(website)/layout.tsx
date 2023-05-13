@@ -17,8 +17,8 @@ export async function sharedMetaData(params) {
     description:
       settings?.description ||
       "Stablo - popular open-source next.js and sanity blog template",
-    keywords: ["Next.js", "Sanity", "Tailwind CSS"],
-    authors: [{ name: "Surjith" }],
+    keywords: ["Blog", "Tech"],
+    authors: [{ name: "Suleman" }, { name: "Effa" }],
     canonical: settings?.url,
     openGraph: {
       images: [
