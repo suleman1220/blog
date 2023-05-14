@@ -68,7 +68,7 @@ export default function Post({ posts: initialposts }) {
         </h1>
         <div className="text-center">
           <p className="mt-2 text-lg">
-            See all posts we have ever written.
+            See all articles we have ever written.
           </p>
         </div>
         {posts && posts?.length === 0 && (
