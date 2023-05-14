@@ -13,25 +13,31 @@ export async function sharedMetaData(params) {
       template: "%s | Info Blog"
     },
     description:
-      settings?.description || "Info Blog Website is a blog website.",
+      settings?.description || "Info Blog is a blog website.",
     keywords: ["Info", "Blog", "Tech", "Education"],
     authors: [{ name: "Suleman Tariq" }, { name: "Effa Iqbal" }],
     canonical: settings?.url,
     openGraph: {
       title: settings?.title || "Info Blog",
       description:
-        settings?.description ||
-        "Info Blog Website is a blog website.",
+        settings?.description || "Info Blog is a blog website.",
       url: settings?.url,
       siteName: "Info Blog",
       images: [
         {
-          url:
-            urlForImage(settings?.openGraphImage)?.src ||
-            "/img/opengraph.jpg",
-          width: 800,
-          height: 600
+          url: `${
+            process.env.VERCEL_URL
+              ? "https://" + process.env.VERCEL_URL
+              : ""
+          }/api/og?title=Info%20Blog`
         }
+        // {
+        //   url:
+        //     urlForImage(settings?.openGraphImage)?.src ||
+        //     "/img/opengraph.jpg",
+        //   width: 800,
+        //   height: 600
+        // }
       ],
       type: "website"
     },

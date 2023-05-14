@@ -1,3 +1,4 @@
+import { sharedMetaData } from "../../layout";
 import PostPage from "./default";
 
 import { getAllPostsSlugs, getPostBySlug } from "@/lib/sanity/client";
@@ -8,8 +9,30 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const post = await getPostBySlug(params.slug);
+  const metadata = await sharedMetaData(params);
 
-  return { title: post.title };
+  return {
+    ...metadata,
+    title: post.title,
+    openGraph: {
+      ...metadata.openGraph,
+      title: post.title,
+      images: [
+        {
+          url: `${
+            process.env.VERCEL_URL
+              ? "https://" + process.env.VERCEL_URL
+              : ""
+          }/api/og?title=${encodeURIComponent(post.title)}`
+        }
+      ],
+      type: "article"
+    },
+    twitter: {
+      ...metadata.twitter,
+      title: post.title
+    }
+  };
 }
 
 export default async function PostDefault({ params }) {
