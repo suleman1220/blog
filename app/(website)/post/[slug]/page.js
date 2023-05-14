@@ -14,9 +14,16 @@ export async function generateMetadata({ params }) {
   return {
     ...metadata,
     title: post.title,
+    description: post.excerpt,
     openGraph: {
       ...metadata.openGraph,
       title: post.title,
+      description: post.excerpt,
+      url: `${
+        process.env.VERCEL_URL
+          ? "https://" + process.env.VERCEL_URL
+          : ""
+      }/post/${encodeURIComponent(post.slug.current)}`,
       images: [
         {
           url: `${
@@ -26,11 +33,21 @@ export async function generateMetadata({ params }) {
           }/api/og?title=${encodeURIComponent(post.title)}`
         }
       ],
-      type: "article"
+      type: "article",
+      publishedTime: post.publishedAt,
+      authors: [post.author?.name]
     },
     twitter: {
       ...metadata.twitter,
-      title: post.title
+      title: post.title,
+      description: post.excerpt,
+      images: [
+        `${
+          process.env.VERCEL_URL
+            ? "https://" + process.env.VERCEL_URL
+            : ""
+        }/api/og?title=${encodeURIComponent(post.title)}`
+      ]
     }
   };
 }
