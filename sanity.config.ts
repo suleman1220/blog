@@ -5,7 +5,8 @@ import { schemaTypes } from "./lib/sanity/schemas";
 import {
   projectId,
   dataset,
-  previewSecretId
+  previewSecretId,
+  apiVersion
 } from "./lib/sanity/config";
 import settings from "./lib/sanity/schemas/settings";
 import {
@@ -20,7 +21,7 @@ export const PREVIEWABLE_DOCUMENT_TYPES: string[] = ["post"];
 
 export default defineConfig({
   name: "default",
-  title: "Blog Site",
+  title: "Info Blog",
   basePath: "/studio",
   projectId: projectId,
   dataset: dataset,

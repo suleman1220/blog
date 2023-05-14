@@ -9,18 +9,21 @@ export async function sharedMetaData(params) {
   return {
     // metadataBase: new URL(settings.url),
     title: {
-      default:
-        settings?.title ||
-        "Stablo - Blog Template for Next.js & Sanity CMS",
-      template: "%s | Stablo"
+      default: settings?.title || "Info Blog",
+      template: "%s | Info Blog"
     },
     description:
-      settings?.description ||
-      "Stablo - popular open-source next.js and sanity blog template",
-    keywords: ["Blog", "Tech"],
-    authors: [{ name: "Suleman" }, { name: "Effa" }],
+      settings?.description || "Info Blog Website is a blog website.",
+    keywords: ["Info", "Blog", "Tech", "Education"],
+    authors: [{ name: "Suleman Tariq" }, { name: "Effa Iqbal" }],
     canonical: settings?.url,
     openGraph: {
+      title: settings?.title || "Info Blog",
+      description:
+        settings?.description ||
+        "Info Blog Website is a blog website.",
+      url: settings?.url,
+      siteName: "Info Blog",
       images: [
         {
           url:
@@ -29,10 +32,11 @@ export async function sharedMetaData(params) {
           width: 800,
           height: 600
         }
-      ]
+      ],
+      type: "website"
     },
     twitter: {
-      title: settings?.title || "Stablo Template",
+      title: settings?.title || "Info Blog",
       card: "summary_large_image"
     },
     robots: {
@@ -48,6 +52,7 @@ export async function generateMetadata({ params }) {
 
 export default async function Layout({ children, params }) {
   const settings = await getSettings();
+
   return (
     <>
       <Navbar {...settings} />
