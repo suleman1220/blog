@@ -10,10 +10,10 @@ export default function About({ authors, settings }) {
         About
       </h1>
       <div className="text-center">
-        <p className="text-lg">Abaut peepal.</p>
+        <p className="text-lg">Unleash Your Curiosity.</p>
       </div>
 
-      <div className="mb-16 mt-6 grid grid-cols-3 gap-5 md:mb-32 md:mt-16 md:gap-16">
+      {/* <div className="mb-16 mt-6 grid grid-cols-3 gap-5 md:mb-32 md:mt-16 md:gap-16">
         {authors.slice(0, 3).map(author => {
           const imageProps = urlForImage(author?.image) || null;
           return (
@@ -32,11 +32,17 @@ export default function About({ authors, settings }) {
             </div>
           );
         })}
-      </div>
+      </div> */}
 
       <div className="prose mx-auto mt-14 text-center dark:prose-invert">
-        <p>blah blah blah blah</p>
-        <p>blah blah blah blah</p>
+        <p>
+          At Info Blog Insider, we're passionate about sharing
+          knowledge and inspiring curiosity. Our articles cover a wide
+          range of topics, from the latest in tech to
+          thought-provoking insights on education and beyond. Join us
+          on a journey of discovery and let your curiosity take
+          flight.
+        </p>
       </div>
     </Container>
   );
