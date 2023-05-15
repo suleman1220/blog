@@ -2,6 +2,7 @@ import { sharedMetaData } from "../../layout";
 import PostPage from "./default";
 
 import { getAllPostsSlugs, getPostBySlug } from "@/lib/sanity/client";
+import { urlForImage } from "@/lib/sanity/image";
 
 export async function generateStaticParams() {
   return await getAllPostsSlugs();
@@ -10,6 +11,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const post = await getPostBySlug(params.slug);
   const metadata = await sharedMetaData(params);
+  const imageProps = post?.mainImage
+    ? urlForImage(post?.mainImage)
+    : null;
 
   return {
     ...metadata,
@@ -27,9 +31,10 @@ export async function generateMetadata({ params }) {
       )}`,
       images: [
         {
-          url: `https://infobloginsider.com/api/og?title=${encodeURIComponent(
-            post.title
-          )}`
+          url: imageProps.src,
+          width: imageProps.width,
+          height: imageProps.height,
+          alt: post.mainImage?.alt || "Thumbnail"
         }
       ],
       type: "article",
@@ -41,9 +46,12 @@ export async function generateMetadata({ params }) {
       title: post.title,
       description: post.excerpt,
       images: [
-        `https://infobloginsider.com/api/og?title=${encodeURIComponent(
-          post.title
-        )}`
+        {
+          url: imageProps.src,
+          width: imageProps.width,
+          height: imageProps.height,
+          alt: post.mainImage?.alt || "Thumbnail"
+        }
       ]
     }
   };

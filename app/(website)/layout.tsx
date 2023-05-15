@@ -9,23 +9,24 @@ export async function sharedMetaData(params) {
   return {
     // metadataBase: new URL(settings.url),
     title: {
-      default: settings?.title || "Info Blog",
-      template: "%s | Info Blog"
+      default: settings?.title || "Info Blog Insider",
+      template: "%s | Info Blog Insider"
     },
     description:
-      settings?.description || "Info Blog is a blog website.",
+      settings?.description || "Info Blog Insider is a blog website.",
     keywords: ["Info", "Blog", "Tech", "Education", "Website"],
     authors: [{ name: "Suleman Tariq" }, { name: "Effa Iqbal" }],
     canonical: settings?.url,
     openGraph: {
-      title: settings?.title || "Info Blog",
+      title: settings?.title || "Info Blog Insider",
       description:
-        settings?.description || "Info Blog is a blog website.",
+        settings?.description ||
+        "Info Blog Insider is a blog website.",
       url: settings?.url,
       siteName: "Info Blog",
       images: [
         {
-          url: "https://infobloginsider.com/api/og?title=Info%20Blog"
+          url: "https://infobloginsider.com/api/og?title=Info%20Blog%20Insider"
         }
         // {
         //   url:
@@ -38,11 +39,12 @@ export async function sharedMetaData(params) {
       type: "website"
     },
     twitter: {
-      title: settings?.title || "Info Blog",
+      title: settings?.title || "Info Blog Insider",
       description:
-        settings?.description || "Info Blog is a blog website.",
+        settings?.description ||
+        "Info Blog Insider is a blog website.",
       images: [
-        "https://infobloginsider.com/api/og?title=Info%20Blog"
+        "https://infobloginsider.com/api/og?title=Info%20Blog%20Insider"
       ],
       card: "summary_large_image"
     },
