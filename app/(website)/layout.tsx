@@ -14,7 +14,7 @@ export async function sharedMetaData(params) {
     },
     description:
       settings?.description || "Info Blog is a blog website.",
-    keywords: ["Info", "Blog", "Tech", "Education"],
+    keywords: ["Info", "Blog", "Tech", "Education", "Website"],
     authors: [{ name: "Suleman Tariq" }, { name: "Effa Iqbal" }],
     canonical: settings?.url,
     openGraph: {
@@ -25,11 +25,7 @@ export async function sharedMetaData(params) {
       siteName: "Info Blog",
       images: [
         {
-          url: `${
-            process.env.VERCEL_URL
-              ? "https://" + process.env.VERCEL_URL
-              : ""
-          }/api/og?title=Info%20Blog`
+          url: "https://infobloginsider.com/api/og?title=Info%20Blog"
         }
         // {
         //   url:
@@ -43,6 +39,11 @@ export async function sharedMetaData(params) {
     },
     twitter: {
       title: settings?.title || "Info Blog",
+      description:
+        settings?.description || "Info Blog is a blog website.",
+      images: [
+        "https://infobloginsider.com/api/og?title=Info%20Blog"
+      ],
       card: "summary_large_image"
     },
     robots: {

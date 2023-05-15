@@ -13,24 +13,23 @@ export async function generateMetadata({ params }) {
 
   return {
     ...metadata,
-    title: post.title,
+    title: {
+      ...metadata.title,
+      default: post.title
+    },
     description: post.excerpt,
     openGraph: {
       ...metadata.openGraph,
       title: post.title,
       description: post.excerpt,
-      url: `${
-        process.env.VERCEL_URL
-          ? "https://" + process.env.VERCEL_URL
-          : ""
-      }/post/${encodeURIComponent(post.slug.current)}`,
+      url: `https://infobloginsider.com/post/${encodeURIComponent(
+        post.slug.current
+      )}`,
       images: [
         {
-          url: `${
-            process.env.VERCEL_URL
-              ? "https://" + process.env.VERCEL_URL
-              : ""
-          }/api/og?title=${encodeURIComponent(post.title)}`
+          url: `https://infobloginsider.com/api/og?title=${encodeURIComponent(
+            post.title
+          )}`
         }
       ],
       type: "article",
@@ -42,11 +41,9 @@ export async function generateMetadata({ params }) {
       title: post.title,
       description: post.excerpt,
       images: [
-        `${
-          process.env.VERCEL_URL
-            ? "https://" + process.env.VERCEL_URL
-            : ""
-        }/api/og?title=${encodeURIComponent(post.title)}`
+        `https://infobloginsider.com/api/og?title=${encodeURIComponent(
+          post.title
+        )}`
       ]
     }
   };
