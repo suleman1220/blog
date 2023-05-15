@@ -4,6 +4,7 @@ import Container from "@/components/container";
 import { useRouter, useSearchParams } from "next/navigation";
 import { paginatedquery } from "@/lib/sanity/groq";
 import PostList from "@/components/postlist";
+import SearchInput from "@/components/ui/search";
 import useSWR, { SWRConfig } from "swr";
 import {
   ChevronLeftIcon,
@@ -18,11 +19,12 @@ export default function Post({ posts: initialposts }) {
   const page = searchParams.get("page");
   const pageIndex = parseInt(page) || 1;
 
-  const POSTS_PER_PAGE = 6;
+  const POSTS_PER_PAGE = 9;
 
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstPage, setIsFirstPage] = useState(false);
   const [isLastPage, setIsLastPage] = useState(false);
+  const [searchText, setSearchText] = useState("");
 
   // [(($pageIndex - 1) * 10)...$pageIndex * 10]{
   const params = {
@@ -37,8 +39,9 @@ export default function Post({ posts: initialposts }) {
     data: posts,
     error,
     isValidating
-  } = useSWR([paginatedquery, params], fetcher, {
+  } = useSWR([paginatedquery, params, searchText], fetcher, {
     fallbackData: initialposts,
+    revalidateOnFocus: false,
     onSuccess: () => {
       setIsLoading(false);
     }
@@ -60,6 +63,8 @@ export default function Post({ posts: initialposts }) {
     router.push(`/archive?page=${pageIndex - 1}`);
   };
 
+  const handleSearch = val => setSearchText(val);
+
   return (
     <>
       <Container>
@@ -67,9 +72,14 @@ export default function Post({ posts: initialposts }) {
           Archive
         </h1>
         <div className="text-center">
-          <p className="mt-2 text-lg">
+          <p className="mb-4 mt-2 text-lg">
             See all articles we have ever written.
           </p>
+
+          <SearchInput
+            placeholder="Search articles"
+            handleSearch={handleSearch}
+          />
         </div>
         {posts && posts?.length === 0 && (
           <div className="flex h-40 items-center justify-center">

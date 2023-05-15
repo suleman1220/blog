@@ -13,7 +13,7 @@ import {
   catpathquery,
   catquery,
   getAll,
-  searchquery
+  paginatedquerywithsearch
 } from "./groq";
 import { createClient } from "next-sanity";
 
@@ -30,8 +30,13 @@ const client = projectId
   ? createClient({ projectId, dataset, apiVersion, useCdn })
   : null;
 
-export const fetcher = async ([query, params]) => {
-  return client ? client.fetch(query, params) : [];
+export const fetcher = async ([query, params, searchText = ""]) => {
+  return client
+    ? client.fetch(searchText ? paginatedquerywithsearch : query, {
+        ...params,
+        query: `*${searchText}*`
+      })
+    : [];
 };
 
 (async () => {
