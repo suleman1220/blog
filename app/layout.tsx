@@ -26,13 +26,11 @@ export default function RootLayout({
       suppressHydrationWarning
       className={cx(inter.variable, lora.variable)}>
       {/* Google AdSense */}
-      <Head>
-        <Script
-          strategy="afterInteractive"
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3771132388058293"
-          crossOrigin="anonymous"
-        />
-      </Head>
+      <Script
+        strategy="afterInteractive"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3771132388058293"
+        crossOrigin="anonymous"
+      />
       {/* Google AdSense */}
       {/* Google Analytics */}
       <Script

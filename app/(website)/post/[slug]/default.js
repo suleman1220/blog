@@ -5,9 +5,12 @@ import { notFound } from "next/navigation";
 import { PortableText } from "@/lib/sanity/plugins/portabletext";
 import { urlForImage } from "@/lib/sanity/image";
 import { parseISO, format } from "date-fns";
+import { SocialIcon } from "react-social-icons";
 
 import CategoryLabel from "@/components/blog/category";
 import AuthorCard from "@/components/blog/authorCard";
+
+const iconStyles = { height: 35, width: 35, marginRight: "8px" };
 
 export default function Post(props) {
   const { loading, post } = props;
@@ -17,6 +20,17 @@ export default function Post(props) {
   if (!loading && !slug) {
     notFound();
   }
+
+  const postURL = encodeURIComponent(
+    `https://www.infobloginsider.com/post/${slug.current}`
+  );
+  const socialURLs = [
+    `https://twitter.com/intent/tweet?url=${postURL}&text=${post.title}`,
+    `https://www.facebook.com/sharer/sharer.php?u=${postURL}`,
+    `https://www.linkedin.com/shareArticle?mini=true&url=${postURL}`,
+    `https://web.whatsapp.com/send?text=${postURL}`,
+    `https://pinterest.com/pin/create/button/?url=${postURL}`
+  ];
 
   const imageProps = post?.mainImage
     ? urlForImage(post?.mainImage)
@@ -94,6 +108,13 @@ export default function Post(props) {
           <div className="prose mx-auto my-3 dark:prose-invert prose-a:text-blue-600">
             {post.body && <PortableText value={post.body} />}
           </div>
+
+          <div className="mt-7 flex w-full items-center justify-center">
+            {socialURLs.map((url, i) => (
+              <SocialIcon key={i} url={url} style={iconStyles} />
+            ))}
+          </div>
+
           <div className="mb-7 mt-7 flex justify-center">
             <Link
               href="/archive"
@@ -101,6 +122,7 @@ export default function Post(props) {
               ← View all Articles
             </Link>
           </div>
+
           {post.author && <AuthorCard author={post.author} />}
         </article>
       </Container>
