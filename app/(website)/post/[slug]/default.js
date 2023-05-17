@@ -111,7 +111,12 @@ export default function Post(props) {
 
           <div className="mt-7 flex w-full items-center justify-center">
             {socialURLs.map((url, i) => (
-              <SocialIcon key={i} url={url} style={iconStyles} />
+              <SocialIcon
+                key={i}
+                target="_blank"
+                url={url}
+                style={iconStyles}
+              />
             ))}
           </div>
 
