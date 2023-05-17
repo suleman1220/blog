@@ -22,6 +22,7 @@ export async function generateMetadata({ params }) {
       default: post.title
     },
     description: post.excerpt,
+    authors: [{ name: post.author?.name }],
     openGraph: {
       ...metadata.openGraph,
       title: post.title,

@@ -14,8 +14,15 @@ export async function sharedMetaData(params) {
     },
     description:
       settings?.description || "Info Blog Insider is a blog website.",
-    keywords: ["Info", "Blog", "Tech", "Education", "Website"],
-    authors: [{ name: "Suleman Tariq" }, { name: "Effa Iqbal" }],
+    keywords: [
+      "Info",
+      "Blog",
+      "Technology",
+      "Education",
+      "Website",
+      "Article"
+    ],
+    authors: [{ name: "Effa Iqbal" }, { name: "Suleman Tariq" }],
     canonical: settings?.url,
     openGraph: {
       title: settings?.title || "Info Blog Insider",
