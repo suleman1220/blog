@@ -33,7 +33,7 @@ export async function sharedMetaData(params) {
       siteName: "Info Blog",
       images: [
         {
-          url: "https://infobloginsider.com/api/og?title=Info%20Blog%20Insider"
+          url: "https://www.infobloginsider.com/api/og?title=Info%20Blog%20Insider"
         }
         // {
         //   url:
@@ -51,7 +51,7 @@ export async function sharedMetaData(params) {
         settings?.description ||
         "Info Blog Insider is a blog website.",
       images: [
-        "https://infobloginsider.com/api/og?title=Info%20Blog%20Insider"
+        "https://www.infobloginsider.com/api/og?title=Info%20Blog%20Insider"
       ],
       card: "summary_large_image"
     },

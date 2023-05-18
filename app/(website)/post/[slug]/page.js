@@ -27,7 +27,7 @@ export async function generateMetadata({ params }) {
       ...metadata.openGraph,
       title: post.title,
       description: post.excerpt,
-      url: `https://infobloginsider.com/post/${encodeURIComponent(
+      url: `https://www.infobloginsider.com/post/${encodeURIComponent(
         post.slug.current
       )}`,
       images: [
