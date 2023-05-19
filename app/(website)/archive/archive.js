@@ -89,7 +89,7 @@ export default function Post({ posts: initialposts }) {
           </div>
         )}
 
-        {isValidating && (
+        {isLoading && (
           <div className="mt-10 grid gap-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3">
             {new Array(6).fill().map((item, index) => (
               <div key={index}>
@@ -98,7 +98,7 @@ export default function Post({ posts: initialposts }) {
             ))}
           </div>
         )}
-        {posts && !isLoading && !isValidating && (
+        {posts && !isLoading && (
           <div className="mt-10 grid gap-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3">
             {posts.map(post => (
               <PostList key={post._id} post={post} aspect="square" />
