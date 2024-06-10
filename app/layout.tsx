@@ -25,14 +25,6 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
       className={cx(inter.variable, lora.variable)}>
-      {/* Google AdSense */}
-      <Script
-        strategy="beforeInteractive"
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3771132388058293"
-        crossOrigin="anonymous"
-        async
-      />
-      {/* Google AdSense */}
       {/* Google Analytics */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-J7YTD5TR78"
