@@ -22,7 +22,7 @@ export async function sharedMetaData(params) {
       "Website",
       "Article"
     ],
-    authors: [{ name: "Effa Iqbal" }, { name: "Suleman Tariq" }],
+    authors: [{ name: "Suleman Tariq" }],
     canonical: settings?.url,
     openGraph: {
       title: settings?.title || "Info Blog Insider",
